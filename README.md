@@ -1,5 +1,5 @@
 # GPTQ-for-LLaMa-Wheels
-Precompiled Wheels for GPTQ-for-LLaMa
+Precompiled Wheels for [GPTQ-for-LLaMa](https://github.com/qwopqwop200/GPTQ-for-LLaMa/tree/cuda)
 
 Conda environment created using:
 ```
