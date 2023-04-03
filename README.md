@@ -1,5 +1,5 @@
-# GPTQ-for-LLaMa-Wheels
-Precompiled Wheels for [GPTQ-for-LLaMa](https://github.com/qwopqwop200/GPTQ-for-LLaMa/tree/cuda)
+# GPTQ-for-LLaMa-Wheel (Windows AMD64)
+Precompiled Windows AMD64 Wheel for [GPTQ-for-LLaMa](https://github.com/qwopqwop200/GPTQ-for-LLaMa/tree/cuda)
 
 Currently not using the latest commits. This wheel is compatible with this fork: https://github.com/oobabooga/GPTQ-for-LLaMa.git 
 
