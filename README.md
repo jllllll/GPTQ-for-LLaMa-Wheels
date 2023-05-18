@@ -1,5 +1,6 @@
-# GPTQ-for-LLaMa-Wheels (Windows AMD64)
-Precompiled Windows AMD64 Wheels for GPTQ-for-LLaMa CUDA
+# GPTQ-for-LLaMa-Wheels
+Precompiled Linux x86_64 Wheels for GPTQ-for-LLaMa CUDA
+See the [main branch](https://github.com/jllllll/GPTQ-for-LLaMa-Wheels) for Windows AMD64 wheels.
 
 Wheels in root directory compiled from [oobabooga's fork](https://github.com/oobabooga/GPTQ-for-LLaMa)
 - Supports Pascal+ (compute 6.0+)
@@ -8,9 +9,7 @@ Wheels in root directory compiled from [oobabooga's fork](https://github.com/oob
 
 832e220 wheels compiled from latest (as of writing) commit of [GPTQ-for-LLaMa](https://github.com/qwopqwop200/GPTQ-for-LLaMa/tree/cuda)
 
-610fdae wheels compiled from equivalent commit of [GPTQ-for-LLaMa](https://github.com/qwopqwop200/GPTQ-for-LLaMa/tree/610fdae6588c2b17bcf2726cacaaf795cd45077e)
-
-0cc4m wheel compiled from [0cc4m's fork](https://github.com/0cc4m/GPTQ-for-LLaMa/tree/3c16fd9c7946ebe85df8d951cb742adbc1966ec7) for [KoboldAI](https://github.com/0cc4m/KoboldAI)
+0cc4m wheel compiled from [0cc4m's fork](https://github.com/0cc4m/GPTQ-for-LLaMa/tree/2023-05-09) for [KoboldAI](https://github.com/0cc4m/KoboldAI)
 - Supports late-Kepler+ (compute 3.5+)
 
 --------------------------
