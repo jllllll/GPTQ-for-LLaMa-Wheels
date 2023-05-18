@@ -1,5 +1,5 @@
 # GPTQ-for-LLaMa-Wheels (Windows AMD64)
-Precompiled Windows AMD64 Wheels for GPTQ-for-LLaMa CUDA
+Precompiled Windows AMD64 Wheels for GPTQ-for-LLaMa CUDA  
 See the [Linux-x64 branch](https://github.com/jllllll/GPTQ-for-LLaMa-Wheels/tree/Linux-x64) for Linux x86_64 wheels.
 
 --------------------------
