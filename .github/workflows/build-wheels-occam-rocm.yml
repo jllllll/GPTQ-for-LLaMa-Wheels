@@ -26,29 +26,15 @@ jobs:
         with:
           python-version: "3.8"
         
-      - name: Setup Mamba
-        uses: conda-incubator/setup-miniconda@v2.2.0
-        with:
-          activate-environment: "build"
-          python-version: 3.8
-          mamba-version: "*"
-          use-mamba: true
-          channels: conda-forge,defaults
-          channel-priority: true
-          add-pip-as-python-dependency: true
-          auto-activate-base: false
-        
       - name: Install GPTQ Dependencies
         run: |
-          mamba install -y 'sentencepiece' -c 'conda-forge' -c 'defaults'
-          python -m pip install transformers==4.28.0 datasets safetensors accelerate==0.18.0 torch==1.13.1+rocm5.2 --extra-index-url https://download.pytorch.org/whl/rocm5.2
+          pip3 install sentencepiece build transformers==4.28.0 datasets safetensors accelerate==0.18.0 torch==1.13.1+rocm5.2 --extra-index-url https://download.pytorch.org/whl/rocm5.2
         
       - name: Build Wheel
         run: |
           export HSA_OVERRIDE_GFX_VERSION=10.3.0
           export HCC_AMDGPU_TARGET=gfx1030
-          cd "$GITHUB_WORKSPACE"
-          python setup.py bdist_wheel
+          python3 -m build -n --wheel
         
       - uses: actions/upload-artifact@v3
         with:
