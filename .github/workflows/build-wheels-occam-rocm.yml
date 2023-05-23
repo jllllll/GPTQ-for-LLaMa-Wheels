@@ -28,7 +28,7 @@ jobs:
         
       - name: Install GPTQ Dependencies
         run: |
-          pip3 install sentencepiece build transformers==4.28.0 datasets safetensors accelerate==0.18.0 torch==1.13.1+rocm5.2 --extra-index-url https://download.pytorch.org/whl/rocm5.2
+          pip3 install sentencepiece build wheel transformers==4.28.0 datasets safetensors accelerate==0.18.0 torch==1.13.1+rocm5.2 --extra-index-url https://download.pytorch.org/whl/rocm5.2
         
       - name: Build Wheel
         run: |
