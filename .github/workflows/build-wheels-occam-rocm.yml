@@ -39,15 +39,15 @@ jobs:
         
       - name: Install GPTQ Dependencies
         run: |
-          mamba install -y 'sentencepiece' 'ninja' -c 'conda-forge' -c 'defaults'
-          python -m pip install build transformers==4.28.0 datasets safetensors accelerate==0.18.0 torch==2.0.1+rocm5.4.2 --extra-index-url https://download.pytorch.org/whl/rocm5.4.2
+          mamba install -y 'sentencepiece' -c 'conda-forge' -c 'defaults'
+          python -m pip install transformers==4.28.0 datasets safetensors accelerate==0.18.0 torch==2.0.1+rocm5.4.2 --extra-index-url https://download.pytorch.org/whl/rocm5.4.2
         
       - name: Build Wheel
         run: |
           export PATH=/opt/rocm/bin:$PATH
           export HSA_OVERRIDE_GFX_VERSION=10.3.0
           export HCC_AMDGPU_TARGET=gfx1030
-          python -m build -n --wheel
+          python setup.py bdist_wheel
         
       - uses: actions/upload-artifact@v3
         with:
