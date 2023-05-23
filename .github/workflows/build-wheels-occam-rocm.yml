@@ -11,7 +11,6 @@ jobs:
       - name: Install ROCm SDK
         run: |
           wget -q -O - https://repo.radeon.com/rocm/rocm.gpg.key | sudo apt-key add -
-          echo 'deb [arch=amd64] https://repo.radeon.com/amdgpu/5.3/ubuntu focal main' | sudo tee /etc/apt/sources.list.d/amdgpu.list
           echo 'deb [arch=amd64] https://repo.radeon.com/rocm/apt/5.2 ubuntu main' | sudo tee /etc/apt/sources.list.d/rocm.list
           sudo apt-get update
           sudo apt install rocm-hip-sdk -y
@@ -20,7 +19,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           repository: '0cc4m/GPTQ-for-LLaMa'
-          ref: '2023-05-19-2'
+          ref: '2023-05-23'
         
       - uses: actions/setup-python@v3
         with:
@@ -28,7 +27,7 @@ jobs:
         
       - name: Install GPTQ Dependencies
         run: |
-          pip3 install sentencepiece build wheel transformers==4.28.0 datasets safetensors accelerate==0.18.0 torch==1.13.1+rocm5.2 --extra-index-url https://download.pytorch.org/whl/rocm5.2
+          pip3 install sentencepiece build wheel ninja transformers==4.28.0 datasets safetensors accelerate==0.18.0 torch==1.13.1+rocm5.2 --extra-index-url https://download.pytorch.org/whl/rocm5.2
         
       - name: Build Wheel
         run: |
