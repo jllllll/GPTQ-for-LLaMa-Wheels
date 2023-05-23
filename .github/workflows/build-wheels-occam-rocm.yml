@@ -1,0 +1,54 @@
+name: Build ROCm Wheel
+
+on: workflow_dispatch
+
+jobs:
+  build_wheels:
+    name: Build wheels for ROCm
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: '0cc4m/GPTQ-for-LLaMa'
+          ref: '2023-05-19-2'
+        
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "3.8"
+        
+      - name: Setup Mamba
+        uses: conda-incubator/setup-miniconda@v2.2.0
+        with:
+          activate-environment: "build"
+          python-version: 3.8
+          mamba-version: "*"
+          use-mamba: true
+          channels: conda-forge,defaults
+          channel-priority: true
+          add-pip-as-python-dependency: true
+          auto-activate-base: false
+        
+      - name: Install ROCm SDK
+        run: |
+          wget -q -O - https://repo.radeon.com/rocm/rocm.gpg.key | sudo apt-key add -
+          echo 'deb [arch=amd64] https://repo.radeon.com/amdgpu/5.4.2/ubuntu focal main' | sudo tee /etc/apt/sources.list.d/amdgpu.list
+          echo 'deb [arch=amd64] https://repo.radeon.com/rocm/apt/5.4.2 ubuntu main' | sudo tee /etc/apt/sources.list.d/rocm.list
+          sudo apt-get update
+          sudo apt install rocm-hip-sdk -y
+        
+      - name: Install GPTQ Dependencies
+        run: |
+          mamba install -y 'sentencepiece' 'ninja' -c 'conda-forge' -c 'defaults'
+          python -m pip install build transformers==4.28.0 datasets safetensors accelerate==0.18.0 torch==2.0.1+rocm5.4.2 --extra-index-url https://download.pytorch.org/whl/rocm5.4.2
+        
+      - name: Build Wheel
+        run: |
+          export PATH=/opt/rocm/bin:$PATH
+          export HSA_OVERRIDE_GFX_VERSION=10.3.0
+          export HCC_AMDGPU_TARGET=gfx1030
+          python -m build -n --wheel
+        
+      - uses: actions/upload-artifact@v3
+        with:
+          path: ./dist/*.whl
