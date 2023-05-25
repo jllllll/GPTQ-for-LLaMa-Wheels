@@ -11,7 +11,7 @@ Wheels in root directory compiled from [oobabooga's fork](https://github.com/oob
 
 610fdae wheels compiled from equivalent commit of [GPTQ-for-LLaMa](https://github.com/qwopqwop200/GPTQ-for-LLaMa/tree/610fdae6588c2b17bcf2726cacaaf795cd45077e)
 
-0cc4m wheel compiled from [0cc4m's fork](https://github.com/0cc4m/GPTQ-for-LLaMa/tree/2023-05-09) for [KoboldAI](https://github.com/0cc4m/KoboldAI)  
+0cc4m wheels compiled from [0cc4m's fork](https://github.com/0cc4m/GPTQ-for-LLaMa) for [KoboldAI](https://github.com/0cc4m/KoboldAI)  
 Deprecated quant_cuda wheel is included for those who want it.
 - Supports late-Kepler+ (compute 3.5+)
 
