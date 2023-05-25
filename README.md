@@ -9,7 +9,7 @@ Wheels in root directory compiled from [oobabooga's fork](https://github.com/oob
 
 832e220 wheels compiled from latest (as of writing) commit of [GPTQ-for-LLaMa](https://github.com/qwopqwop200/GPTQ-for-LLaMa/tree/cuda)
 
-0cc4m wheel compiled from [0cc4m's fork](https://github.com/0cc4m/GPTQ-for-LLaMa/tree/2023-05-09) for [KoboldAI](https://github.com/0cc4m/KoboldAI)
+0cc4m wheels compiled from [0cc4m's fork](https://github.com/0cc4m/GPTQ-for-LLaMa) for [KoboldAI](https://github.com/0cc4m/KoboldAI)
 - Supports late-Kepler+ (compute 3.5+)
 
 **Wheels are compiled using GitHub Actions.**
