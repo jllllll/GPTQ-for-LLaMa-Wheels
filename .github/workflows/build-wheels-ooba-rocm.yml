@@ -1,0 +1,39 @@
+name: Build ROCm Wheel for oobabooga
+
+on: workflow_dispatch
+
+jobs:
+  build_wheels:
+    name: Build wheel for ROCm
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Install ROCm SDK
+        run: |
+          wget -q -O - https://repo.radeon.com/rocm/rocm.gpg.key | sudo apt-key add -
+          echo 'deb [arch=amd64] https://repo.radeon.com/rocm/apt/5.4.2/ ubuntu main' | sudo tee /etc/apt/sources.list.d/rocm.list
+          sudo apt-get update
+          sudo apt install rocm-hip-sdk5.4.2 -y
+          echo "/opt/rocm/bin" >> $GITHUB_PATH
+        
+      - uses: actions/checkout@v3
+        with:
+          repository: '0cc4m/GPTQ-for-LLaMa'
+          ref: '2023-05-23'
+        
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "3.8"
+        
+      - name: Install GPTQ Dependencies
+        run: |
+          pip3 install sentencepiece build wheel ninja git+https://github.com/huggingface/transformers@e45e756d22206ca8fa9fb057c8c3d8fa79bf81c6 datasets safetensors==0.3.1 git+https://github.com/huggingface/accelerate@0226f750257b3bf2cadc4f189f9eef0c764a0467 torch==2.0.1+rocm5.4.2 --extra-index-url https://download.pytorch.org/whl/rocm5.4.2
+        
+      - name: Build Wheel
+        run: |
+          cp 'setup_cuda.py' 'setup.py'
+          python3 -m build -n --wheel
+        
+      - uses: actions/upload-artifact@v3
+        with:
+          path: ./dist/*.whl
