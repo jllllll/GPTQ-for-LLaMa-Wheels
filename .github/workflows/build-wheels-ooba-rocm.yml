@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: 'https://github.com/WapaMario63/GPTQ-for-LLaMa-ROCm'
+          repository: 'WapaMario63/GPTQ-for-LLaMa-ROCm'
           ref: 'rocm'
           
       - name: Install ROCm SDK
