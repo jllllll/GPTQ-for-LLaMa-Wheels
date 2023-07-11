@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: 'oobabooga/GPTQ-for-LLaMa'
-          ref: 'cuda'
+          repository: 'WapaMario63/GPTQ-for-LLaMa-ROCm'
+          ref: 'rocm'
       - uses: actions/checkout@v3
         with:
           repository: 'ROCmSoftwarePlatform/rocPRIM'
@@ -57,12 +57,11 @@ jobs:
         
       - name: Install GPTQ Dependencies
         run: |
-          pip3 install sentencepiece build wheel ninja transformers==4.30.2 datasets safetensors==0.3.1 accelerate==0.20.3
-          pip3 install torch==2.0.1+rocm5.4.2 torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.4.2
+          pip3 install sentencepiece build wheel ninja transformers==4.30.2 datasets safetensors==0.3.1 accelerate==0.20.3 torch==2.0.1+rocm5.4.2 torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/rocm5.4.2
         
       - name: Build Wheel
         run: |
-          cp 'setup_cuda.py' 'setup.py'
+          cp 'setup_rocm.py' 'setup.py'
           python3 -m build -n --wheel
         
       - uses: actions/upload-artifact@v3
