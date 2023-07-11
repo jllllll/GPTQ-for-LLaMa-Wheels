@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: 'WapaMario63/GPTQ-for-LLaMa-ROCm'
-          ref: 'rocm'
+          repository: 'oobabooga/GPTQ-for-LLaMa'
+          ref: 'cuda'
           
       - name: Install ROCm SDK
         run: |
@@ -31,7 +31,7 @@ jobs:
         
       - name: Build Wheel
         run: |
-          cp 'setup_rocm.py' 'setup.py'
+          cp 'setup_cuda.py' 'setup.py'
           python3 -m build -n --wheel
         
       - uses: actions/upload-artifact@v3
