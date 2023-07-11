@@ -16,8 +16,8 @@ jobs:
       - name: Install ROCm SDK
         run: |
           sudo apt update
-          wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/focal/amdgpu-install_5.4.50402-1_all.deb
-          sudo dpkg -i amdgpu-install_5.4.50402-1_all.deb
+          wget https://repo.radeon.com/amdgpu-install/5.4.3/ubuntu/focal/amdgpu-install_5.4.50403-1_all.deb
+          sudo dpkg -i amdgpu-install_5.4.50403-1_all.deb
           sudo DEBIAN_FRONTEND=noninteractive amdgpu-install --usecase=rocm --rocmrelease=5.4.3 --no-dkms --no-32 -y
           echo "/opt/rocm-5.4.3/bin" >> $GITHUB_PATH
         
