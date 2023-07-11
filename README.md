@@ -12,6 +12,8 @@ Wheels in root directory compiled from [oobabooga's fork](https://github.com/oob
 0cc4m wheels compiled from [0cc4m's fork](https://github.com/0cc4m/GPTQ-for-LLaMa) for [KoboldAI](https://github.com/0cc4m/KoboldAI)
 - Supports late-Kepler+ (compute 3.5+)
 
+ROCm wheel compiled from https://github.com/WapaMario63/GPTQ-for-LLaMa-ROCm
+
 **Wheels are compiled using GitHub Actions.**
 
 --------------------------
